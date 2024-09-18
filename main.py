@@ -50,7 +50,7 @@ CONFIGURATION = {
   "N_EPOCHS": 1,
   "BATCH_SIZE": 128,
   "DROPOUT_RATE": 0.0,
-  "IM_SIZE": 224,
+  "IM_SIZE": 50,
   "REGULARIZATION_RATE": 0.0,
   "N_FILTERS": 6,
   "KERNEL_SIZE": 3,
@@ -140,7 +140,7 @@ lenet_model.compile(
               loss='binary_crossentropy',
               metrics=['accuracy'],
               )
-history = lenet_model.fit(full_dataset,validation_data=val_dataset, epochs=1)
+history = lenet_model.fit(train_dataset,validation_data=val_dataset, epochs=10)
 # test_data = tf.data.Dataset.range(8)
 # test_data = list(normalized_dataset.as_numpy_iterator())
 # test = lenet_model.evaluate(test_data)
@@ -163,25 +163,25 @@ plt.show()
 
 
 
-predict = lenet_model.predict(test_dataset)
-labels = np.concatenate([y for x, y in test_dataset], axis=0)
-images = np.concatenate([x for x, y in test_dataset], axis=0)
-
-y_true = list(labels[:,0].numpy())
-y_pred = list(lenet_model.predict(images)[:,0])
-
-ind = np.arange(100)
-plt.figure(figsize=(40,20))
-
-width = 0.1
-
-plt.bar(ind, y_pred, width, label='Predicted Car Price')
-plt.bar(ind + width, y_true, width, label='Actual Car Price')
-
-plt.xlabel('Actual vs Predicted Prices')
-plt.ylabel('Car Price Prices')
-
-plt.show()
+# predict = lenet_model.predict(test_dataset)
+# labels = np.concatenate([y for x, y in test_dataset], axis=0)
+# images = np.concatenate([x for x, y in test_dataset], axis=0)
+#
+# y_true = list(labels[:,0].numpy())
+# y_pred = list(lenet_model.predict(images)[:,0])
+#
+# ind = np.arange(100)
+# plt.figure(figsize=(40,20))
+#
+# width = 0.1
+#
+# plt.bar(ind, y_pred, width, label='Predicted Car Price')
+# plt.bar(ind + width, y_true, width, label='Actual Car Price')
+#
+# plt.xlabel('Actual vs Predicted Prices')
+# plt.ylabel('Car Price Prices')
+#
+# plt.show()
 
 
 
